@@ -38,7 +38,19 @@ namespace InstagramFollowers
             var followersCount = driver.FindElement(By.CssSelector("li.Y8-fY:nth-child(2) > a:nth-child(1) > span:nth-child(1)")).Text;
             var followingCount = driver.FindElement(By.CssSelector("li.Y8-fY:nth-child(3) > a:nth-child(1) > span:nth-child(1)")).Text;
 
-           
+            //Get Names And Usernames For All User
+            List<string> Followers = new List<string>();
+            List<string> Following = new List<string>();
+            for (int i = 0; i < int.Parse(followersCount); i++)
+            {
+                Followers.Add(driver.FindElement(By.XPath("/html/body/div[3]/div/div[2]/ul/div/li[i]/div/div[1]/div[2]/div[1]/a")).Text);
+                Console.WriteLine(Followers[i]);
+            }
+            for (int i = 0; i < int.Parse(followingCount); i++)
+            {
+                Following.Add(driver.FindElement(By.XPath("/html/body/div[3]/div/div[2]/ul/div/li[i]/div/div[2]/div[1]/div/div/a")).Text);
+                Console.WriteLine(Following[i]);
+            }
             Console.Read();
         }
     }
